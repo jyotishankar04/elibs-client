@@ -1,42 +1,51 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { login } from "../features/books/bookSlice";
+import { Link, useLocation } from "react-router-dom";
+import { login, logout, State } from "../features/books/bookSlice";
+import NavMenu from "./NavMenu";
+import { Button } from "./ui/button";
 
 function Navbar() {
   const dispatch = useDispatch();
-  const isLogin = useSelector<{ isLoggedIn: boolean }>(
-    (state) => state.isLoggedIn
-  );
+  const isLogin = useSelector((state: State) => state.isLoggedIn);
+  const [navshow, setNavShow] = useState(true);
+  const location = useLocation();
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       dispatch(login());
+    } else {
+      dispatch(logout());
     }
-  }, [dispatch]);
+    if (location.pathname === "/auth/signup") {
+      setNavShow(false);
+    } else {
+      setNavShow(true);
+    }
+  }, [dispatch, location]);
   return (
-    <div className="container mx-auto py-5 px-5  flex justify-between items-center">
+    <div
+      className={`container mx-auto py-5 px-5  flex justify-between items-center ${
+        navshow ? "block" : "hidden"
+      }`}
+    >
       <div className="text-3xl  font-semibold ">
-        <Link to={"/"} className="text-primary-600">
+        <Link to={"/"} className="text-orange-600">
           coders_BooK
         </Link>
       </div>
       <div
         className={`flex gap-3 items-center ${isLogin ? "hidden" : "block"}`}
       >
-        <button
-          className=" border-primary-400 border-2 rounded-md px-6 py-2 text-primary-600 font-semibold
-        hover:bg-primary-200 hover:border-primary-200
-        active:bg-primary-400 hover:text-white active:border-primary-400 "
-        >
-          Sign in
-        </button>
-        <button
-          className=" border-primary-600 bg-primary-600 border-2 rounded-md px-6 py-2 text-white font-semibold
-        hover:bg-primary-800 hover:border-primary-800
-        active:bg-primary-400 hover:text-white active:border-primary-400 "
-        >
-          Sign Up
-        </button>
+        <Button variant={"outline"}>
+          <Link to={"/auth/signin"}>Sign in</Link>
+        </Button>
+        <Button>
+          <Link to={"/auth/signup"}>Sign up</Link>
+        </Button>
+      </div>
+      <div className={`${isLogin ? "block" : "hidden"}`}>
+        <NavMenu />
       </div>
       {/* <div></div> */}
     </div>
