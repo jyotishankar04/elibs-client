@@ -1,17 +1,46 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchHomePageBooks } from "./fetchHomeBooks";
+import { fetchHomePageBooks, getProfileDetails, User } from "./fetchHomeBooks";
 import { Book } from "../../components/BookList";
+import { User } from "lucide-react";
 
 export interface State {
   isLoggedIn: boolean;
   books: Book[];
   containerLoading: boolean;
+  isUploading: boolean;
+  userInfo: {
+    name: string;
+    email: string;
+    createdAt: Date;
+    publishedBooks: Book[];
+    wishlist: [];
+    bio: string;
+    instagramUrl: string;
+    linkedinUrl: string;
+    twitterUrl: string;
+    dob: string;
+    profileImage: string;
+  };
 }
 
 const initialState: State = {
   isLoggedIn: false,
   books: [],
   containerLoading: false,
+  isUploading: false,
+  userInfo: {
+    name: "",
+    email: "",
+    createdAt: new Date(),
+    wishlist: [],
+    bio: "",
+    instagramUrl: "",
+    linkedinUrl: "",
+    twitterUrl: "",
+    profileImage: "",
+    publishedBooks: [],
+    dob: "",
+  },
 };
 
 export const bookSlice = createSlice({
@@ -23,6 +52,9 @@ export const bookSlice = createSlice({
     },
     logout: (state) => {
       state.isLoggedIn = false;
+    },
+    setIsUploading: (state, actions) => {
+      state.isUploading = actions.payload;
     },
   },
 
@@ -40,9 +72,25 @@ export const bookSlice = createSlice({
         state.containerLoading = false;
       }
     );
+    builder.addCase(
+      getProfileDetails.fulfilled,
+      (state, action: PayloadAction<User>) => {
+        state.userInfo.name = action.payload.name;
+        state.userInfo.email = action.payload.email;
+        state.userInfo.createdAt = action.payload.createdAt;
+        state.userInfo.publishedBooks = action.payload.publishedBooks;
+        state.userInfo.bio = action.payload.bio;
+        state.userInfo.instagramUrl = action.payload.instagramUrl;
+        state.userInfo.linkedinUrl = action.payload.linkedinUrl;
+        state.userInfo.twitterUrl = action.payload.twitterUrl;
+        state.userInfo.profileImage = action.payload.profileImage;
+        state.userInfo.wishlist = action.payload.wishlist;
+        state.userInfo.dob = action.payload.dob;
+      }
+    );
   },
 });
 
-export const { login, logout } = bookSlice.actions;
+export const { login, logout, setIsUploading } = bookSlice.actions;
 
 export default bookSlice.reducer;

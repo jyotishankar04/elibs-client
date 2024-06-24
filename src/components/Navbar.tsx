@@ -1,16 +1,53 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { login, logout, State } from "../features/books/bookSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  login,
+  logout,
+  setIsUploading,
+  State,
+} from "../features/books/bookSlice";
 import NavMenu from "./NavMenu";
 import { Button } from "./ui/button";
+import axios from "axios";
+import DrowerLoader from "./DrowerLoader";
+import toast from "react-hot-toast";
+import { getProfileDetails } from "../features/books/fetchHomeBooks";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const fetchProfile = async () => {
+    dispatch(getProfileDetails());
+  };
+
+  useEffect(() => {
+    fetchProfile();
+    dispatch(setIsUploading(true));
+
+    try {
+      axios
+        .get("http://localhost:3001/api/v1/users/validation-check", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((response) => {
+          if (response) {
+            dispatch(setIsUploading(false));
+            toast.success("Validation Success");
+          }
+        });
+      dispatch(setIsUploading(false));
+    } catch (error) {
+      localStorage.removeItem("token");
+      dispatch(setIsUploading(false));
+      navigate("/auth/signup");
+    }
+  }, []);
   const isLogin = useSelector((state: State) => state.isLoggedIn);
   const [navshow, setNavShow] = useState(true);
   const location = useLocation();
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       dispatch(login());
@@ -48,6 +85,7 @@ function Navbar() {
         <NavMenu />
       </div>
       {/* <div></div> */}
+      <DrowerLoader />
     </div>
   );
 }

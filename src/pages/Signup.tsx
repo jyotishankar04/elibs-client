@@ -16,13 +16,17 @@ import {
   TabsTrigger,
 } from "../components/ui/tabs";
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { getProfileDetails } from "../features/books/fetchHomeBooks";
+import axios from "axios";
 interface Signup {
   name: string;
   email: string;
   password: string;
 }
 function Signup() {
+  const dispatch = useDispatch();
   const { sign } = useParams();
   const [defaultValue, setDefaultValue] = useState("signup");
   const [signupData, setSignupData] = useState<Signup>({
@@ -63,33 +67,34 @@ function Signup() {
         email: "",
         password: "",
       });
+      dispatch(getProfileDetails());
       navigate("/");
     }
   };
-
   const handleSignin = async () => {
-    const res = await fetch("http://localhost:3001/api/v1/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signinData),
-    });
-    const data = await res.json();
-    localStorage.setItem("token", data.accessToken);
+    const res = await axios.post(
+      "http://localhost:3001/api/v1/users/login",
+      signinData
+    );
+
+    if (!res) {
+      toast.error("Incorrect username or password");
+      return;
+    }
+    localStorage.setItem("token", res.data.accessToken);
     if (localStorage.getItem("token")) {
       setSigninData({
         email: "",
         password: "",
       });
+      dispatch(getProfileDetails());
       navigate("/");
     } else {
-      toast.warning("Error in login");
+      toast.error("Error in login");
     }
   };
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <ToastContainer />
       <Tabs defaultValue={defaultValue} className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="signup">Sign Up</TabsTrigger>
@@ -193,6 +198,7 @@ function Signup() {
               </Button>
             </CardFooter>
           </Card>
+          <Toaster />
         </TabsContent>
       </Tabs>
     </div>

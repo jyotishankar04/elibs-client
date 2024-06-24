@@ -10,22 +10,44 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { State } from "../features/books/bookSlice";
 
 function NavMenu() {
+  const image = useSelector((state: State) => state.userInfo.profileImage);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary">
-          <CgProfile className="text-3xl text-orange-600" />
+        <Button
+          variant="secondary"
+          className="bg-white p-0 py-0 rounded-full overflow-hidden flex justify-center items-center border-2"
+        >
+          <img
+            className=" w-14 h-14 object-cover object-center"
+            src={image}
+            alt=""
+          />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link to={"/user/profile"} className="w-full h-full">
+              Profile
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link to={"/book/upload"} className="w-full h-full">
+              Upload Book
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link to={"/setting"} className="w-full h-full">
+              Settings
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuSeparator />
@@ -36,7 +58,7 @@ function NavMenu() {
           <Link
             className="w-full"
             onClick={() => {
-              localStorage.clear();
+              localStorage.removeItem("token");
             }}
             to={"/auth/signup"}
           >

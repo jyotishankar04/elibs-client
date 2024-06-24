@@ -28,9 +28,11 @@ function BookList() {
   }, [dispatch]);
   return (
     <div className=" grid grid-cols-3 gap-5 mt-5 mb-5">
-      {Array.isArray(books)
-        ? books.map((book: Book, index) => <BookCard book={book} key={index} />)
-        : ""}
+      {Array.isArray(books) ? (
+        books.map((book: Book, index) => <BookCard book={book} key={index} />)
+      ) : (
+        <h1>Loading</h1>
+      )}
     </div>
   );
 }

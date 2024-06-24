@@ -12,11 +12,11 @@ interface BookCardProps {
 const BookCard: React.FC<BookCardProps> = ({ book }) => {
   return (
     <Link to={`/book/${book._id}`}>
-      <Card className="flex h-60 gap-2 items-center">
+      <Card className="grid h-60 gap-4 grid-cols-2 ">
         <CardHeader className="h-full rounded-lg object-cover object-center overflow-hidden aspect-square">
           <img
             src={book.coverImage}
-            className=" rounded-lg h-full"
+            className=" rounded-lg h-full "
             alt={book.title}
           />
         </CardHeader>
@@ -28,7 +28,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
             <p className="line-clamp-2 text-gray-500">{book.description}</p>
             <p className="text-sm">Author: {book.author}</p>
             <p className="text-sm">
-              Updated At: {timeElapsedSince(book.updatedAt.toString())}
+              Updated: {timeElapsedSince(book.updatedAt.toString())}
             </p>
           </div>
           <div>
