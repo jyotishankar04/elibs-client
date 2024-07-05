@@ -19,7 +19,7 @@ const BookCard: React.FC<BookProps> = ({ book }) => {
     try {
       setButtonLoading(true);
       await axios.post(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/books/wishlist/add`,
+        `https://elibapi.devsuvam.xyz/api/v1/books/wishlist/add`,
         {
           bookId: book._id,
         },

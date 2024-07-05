@@ -63,7 +63,7 @@ function UploadPage() {
 
     try {
       const response = await axios.post(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/books/upload`,
+        `https://elibapi.devsuvam.xyz/api/v1/books/upload`,
 
         form,
         {

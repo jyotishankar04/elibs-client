@@ -41,7 +41,7 @@ function GeneralSettings() {
 
     try {
       const res = await axios.put(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/profile/update-image`,
+        `https://elibapi.devsuvam.xyz/api/v1/users/profile/update-image`,
         form,
         {
           headers: {
@@ -89,7 +89,7 @@ function GeneralSettings() {
     try {
       dispatch(startDrowerLoader());
       const res = await axios.put(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/profile/update-data`,
+        `https://elibapi.devsuvam.xyz/api/v1/users/profile/update-data`,
         formData,
         {
           headers: {

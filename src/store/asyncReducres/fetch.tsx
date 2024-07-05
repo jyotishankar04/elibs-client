@@ -5,7 +5,7 @@ export const fetchUser = createAsyncThunk<User, void, { rejectValue: string }>(
   async () => {
     try {
       const response = await axios.get<{ user: User }>(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/user/profile`,
+        `https://elibapi.devsuvam.xyz/api/v1/users/user/profile`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -29,7 +29,7 @@ export const fetchBooks = createAsyncThunk<
 >("book/fetchBooks", async () => {
   try {
     const response = await axios.get(
-      `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/books/list`
+      `https://elibapi.devsuvam.xyz/api/v1/books/list`
     );
 
     return response.data.data;

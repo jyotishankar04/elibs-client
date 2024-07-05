@@ -34,7 +34,7 @@ function Signup() {
     };
     try {
       const res = await axios.post(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/register`,
+        `https://elibapi.devsuvam.xyz/api/v1/users/register`,
         data
       );
       localStorage.setItem("token", res.data.accessToken);

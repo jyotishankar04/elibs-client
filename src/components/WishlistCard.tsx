@@ -13,7 +13,7 @@ const WishlistCard: React.FC<prop> = ({ book }) => {
   const handleRemoveBook = async () => {
     try {
       await axios.delete(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/books/wishlist/remove/${book._id}`,
+        `https://elibapi.devsuvam.xyz/api/v1/books/wishlist/remove/${book._id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

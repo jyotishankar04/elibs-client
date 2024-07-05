@@ -29,7 +29,7 @@ function UserProfilePage() {
   const { userId } = useParams();
   const fetchUserProfile = async (userId: string) => {
     const res = await axios.get(
-      `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/user/${userId}`,
+      `https://elibapi.devsuvam.xyz/api/v1/users/user/${userId}`,
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     );
     setUser(res.data.user);

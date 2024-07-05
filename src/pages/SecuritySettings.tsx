@@ -49,7 +49,7 @@ function SecuritySettings() {
     try {
       dispatch(startDrowerLoader());
       const res = await axios.patch(
-        `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/update-password`,
+        `https://elibapi.devsuvam.xyz/api/v1/users/update-password`,
         {
           oldPassword: formData.currentPassword,
           newPassword: formData.newPassword,
