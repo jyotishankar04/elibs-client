@@ -1,5 +1,7 @@
+import UnderConstruction from "../components/UnderConstruction";
+
 function SupportSetting() {
-  return <div>SuppertSetting</div>;
+  return <UnderConstruction />;
 }
 
 export default SupportSetting;

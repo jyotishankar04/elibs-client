@@ -11,6 +11,9 @@ import SecuritySettings from "./pages/SecuritySettings";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import AuthLayout from "./layouts/AuthLayout";
+import Home from "./pages/Home";
+import UserProfilePage from "./pages/UserProfilePage";
+import UploadPage from "./pages/UploadPage";
 
 function RouteManagement() {
   return (
@@ -21,11 +24,16 @@ function RouteManagement() {
           <Route path="signin" element={<Signin />} />
         </Route>
         <Route path="/" element={<HomeLayout />}>
+          <Route path="" element={<Home />} />
           <Route path="book" element={<BookLauout />}>
             <Route path=":bookId" element={<BookDetailsPage />} />
           </Route>
           <Route path="user" element={<UserLayout />}>
             <Route path="profile" element={<Profile />} />
+            <Route path="upload" element={<UploadPage />} />
+
+            <Route path=":userId" element={<UserProfilePage />} />
+
             <Route path="settings" element={<SettingsLayout />}>
               <Route path="general" element={<GeneralSettings />} />
               <Route path="security" element={<SecuritySettings />} />
