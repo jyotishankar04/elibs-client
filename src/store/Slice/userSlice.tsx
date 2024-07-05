@@ -16,7 +16,6 @@ const initialState = {
   createdAt: "",
   updatedAt: "",
   publishedBooks: [],
-  dob: "",
 };
 const userSlice = createSlice({
   name: "user",

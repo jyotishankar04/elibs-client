@@ -57,7 +57,6 @@ function Profile() {
           </h1>
           <p>Bio : {user.bio}</p>
 
-          <p>Date of birth : {user.dob}</p>
           <p>Created : {timeElapsedSince(user.createdAt)}</p>
           <div className="text-3xl flex gap-10">
             <Link

@@ -15,7 +15,7 @@ import { useAppDispatch } from "../store/hooks.ts";
 function BookDetailsPage() {
   const navigate = useNavigate();
   const { bookId } = useParams();
-  const [book, setBook] = useState<Book>();
+  const [book, setBook] = useState<Book | undefined>();
   const fetchCurrentBook = async (bookId: string) => {
     const res = await axios.get(
       `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/books/book/${bookId}`,
@@ -32,7 +32,9 @@ function BookDetailsPage() {
   const [buttonLoading, setButtonLoading] = useState(false);
 
   const dispatch = useAppDispatch();
-  const idArray = useSelector((state: RootState) => state.user.wishlistArray);
+  const idArray = useSelector(
+    (state: RootState) => state.user.wishlistArray as string[]
+  );
   const handleAddToWishlist = async () => {
     try {
       setButtonLoading(true);
@@ -59,7 +61,6 @@ function BookDetailsPage() {
   useEffect(() => {
     fetchCurrentBook(bookId as string);
   }, [bookId]);
-
   return (
     <div className="container mx-auto mt-1">
       <div>
@@ -102,16 +103,16 @@ function BookDetailsPage() {
           <div className="flex justify-start gap-10">
             <button
               className={`text-white min-w-10 ${
-                idArray.includes(book?._id)
+                book?._id && idArray.includes(book._id)
                   ? "bg-gray-300 cursor-not-allowed "
                   : "hover:bg-orange-800 bg-orange-600"
               } text-lg px-2 py-2 rounded-lg `}
-              disabled={idArray.includes(book?._id) ? true : false}
+              disabled={book?._id && idArray.includes(book?._id) ? true : false}
               onClick={handleAddToWishlist}
             >
               {buttonLoading ? (
                 <div className="w-5 h-5 border-y-transparent  animate-spin border-4 rounded-full border-white"></div>
-              ) : idArray.includes(book?._id) ? (
+              ) : book?._id && idArray.includes(book?._id) ? (
                 <p className="flex gap-2 items-center ">
                   Added
                   <FaCheck />

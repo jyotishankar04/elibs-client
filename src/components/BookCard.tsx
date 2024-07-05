@@ -13,7 +13,7 @@ const BookCard: React.FC<BookProps> = ({ book }) => {
   const [buttonLoading, setButtonLoading] = useState(false);
   const dispatch = useAppDispatch();
   const idArray = useAppSelector(
-    (state: RootState) => state.user.wishlistArray
+    (state: RootState) => state.user.wishlistArray as string[]
   );
   const handleAddToWishlist = async () => {
     try {
@@ -69,7 +69,7 @@ const BookCard: React.FC<BookProps> = ({ book }) => {
           </Link>
           <button
             className={`text-white min-w-10 ${
-              idArray.includes(book._id)
+              book?._id && idArray.includes(book._id)
                 ? "bg-gray-300 cursor-not-allowed "
                 : "hover:bg-orange-800 bg-orange-600"
             } text-lg px-2 py-2 rounded-sm  `}

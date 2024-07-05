@@ -24,10 +24,10 @@ function UserProfilePage() {
     createdAt: "",
     publishedBooks: [],
     updatedAt: "",
-    dob: "",
+    wishlistArray: [],
   });
   const { userId } = useParams();
-  const fetchUserProfile = async () => {
+  const fetchUserProfile = async (userId: string) => {
     const res = await axios.get(
       `http://ec2-13-202-141-182.ap-south-1.compute.amazonaws.com/api/v1/users/user/${userId}`,
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
@@ -35,7 +35,7 @@ function UserProfilePage() {
     setUser(res.data.user);
   };
   useEffect(() => {
-    fetchUserProfile();
+    fetchUserProfile(userId as string);
   }, [userId]);
   return (
     <div>
@@ -70,7 +70,6 @@ function UserProfilePage() {
               </h1>
               <p>Bio : {user.bio}</p>
 
-              <p>Date of birth : {user.dob}</p>
               <p>Created : {timeElapsedSince(user.createdAt)}</p>
               <div className="text-3xl flex gap-10">
                 <Link

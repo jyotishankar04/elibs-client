@@ -68,6 +68,7 @@ export interface User {
   twitterUrl: string;
   createdAt: string;
   updatedAt: string;
-  dob: string;
+
+  wishlistArray: string[];
   publishedBooks: [];
 }
