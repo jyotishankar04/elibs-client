@@ -1,0 +1,8 @@
+{
+  "redireacts": [
+    {
+      "from": "/*",
+      "to": "/index.html"
+    }
+  ]
+}
