@@ -32,13 +32,7 @@ function FeedBackPopUp() {
         <p className="text-xl text-center text-red-500 w-[80%]">
           We are excited to announce that Coders Book has been launched.This
           site is under development phase. We are working hard to bring you a
-          better experience. Please feel free to contact us at <br />
-          <a
-            href="mailto:patrajyotishankar@gmail.com "
-            className="text-blue-800 hover:underline"
-          >
-            patrajyotishankar@gmail.com
-          </a>
+          better experience. Please feel free to contact us
         </p>
         <button
           onClick={closePopup}
