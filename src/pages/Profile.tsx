@@ -128,7 +128,7 @@ function Profile() {
                 ))}
             </div>
           ) : (
-            <div className="flex justify-start gap-10 mt-5 flex-wrap">
+            <div className="grid grid-cols-4 gap-10 mt-3">
               {user.publishedBooks.length > 0 ? (
                 user.publishedBooks.map((book: Book, index) => (
                   <BookCard key={index} book={book} />
