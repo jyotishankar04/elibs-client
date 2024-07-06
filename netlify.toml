@@ -1,8 +1,6 @@
 {
-  "redireacts": [
-    {
-      "from": "/*",
-      "to": "/index.html"
-    }
-  ]
+  "from": "/*",
+  "to": "/index.html",
+  "status": 200,
+  "force": true
 }
