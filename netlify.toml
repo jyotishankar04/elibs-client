@@ -1,6 +1,12 @@
-{
-  "from": "/*",
-  "to": "/index.html",
-  "status": 200,
-  "force": true
-}
+[[redirects]]
+  from = "https://codersboook.netlify.app"
+  to = "https://codersbook.devsuvam.xyz"
+  status = 301
+  force = true
+
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
