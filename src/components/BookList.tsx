@@ -11,6 +11,7 @@ function BookList() {
     dispatch(fetchBooks()).unwrap();
   }, [dispatch]);
   const books = useSelector((state: RootState) => state.book.book);
+
   return (
     <div className="flex flex-col gap-3 my-3 text-gray-500 text-3xl font-semibold ">
       <div>

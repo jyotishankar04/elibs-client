@@ -12,7 +12,10 @@ function DrowerLoader() {
         containerLoading ? "block" : "hidden"
       } fixed flex justify-center items-center`}
     >
-      <div className="w-96 h-60 bg-white rounded-lg flex items-center justify-center">
+      <div className="w-96 h-60 bg-white rounded-lg flex items-center flex-col justify-center">
+        <h1 className="text-3xl font-semibold text-gray-800 mb-5">
+          Loading please wait...
+        </h1>
         <div className="w-24 animate-spin border-y-0 h-24 border-8 border-black rounded-full"></div>
       </div>
     </div>

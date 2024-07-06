@@ -8,6 +8,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { timeElapsedSince } from "../utils/timeCalculate";
 import BookCard from "../components/BookCard";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 function UserProfilePage() {
   const [user, setUser] = useState<User>({
@@ -131,7 +132,7 @@ function UserProfilePage() {
           </div>
         </div>
       ) : (
-        <h1>Loading......</h1>
+        <Loading />
       )}
     </div>
   );

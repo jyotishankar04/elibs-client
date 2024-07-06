@@ -72,7 +72,7 @@ function BookDetailsPage() {
         </button>
       </div>
       <div className="grid grid-cols-2 mt-2">
-        <div className="p-4 rounded-lg">
+        <div className="p-4 rounded-lg mx-auto">
           <img src={book?.coverImage} alt="" className="rounded-lg max-h-96" />
         </div>
         <div className="flex flex-col justify-start gap-3 p-4">
@@ -97,8 +97,7 @@ function BookDetailsPage() {
             Last Update: {book && timeElapsedSince(book.updatedAt.toString())}
           </h4>
           <h4>
-            zZ First Publish:{" "}
-            {book && timeElapsedSince(book.createdAt.toString())}
+            First Publish: {book && timeElapsedSince(book.createdAt.toString())}
           </h4>
           <div className="flex justify-start gap-10">
             <button

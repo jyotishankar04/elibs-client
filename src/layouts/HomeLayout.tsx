@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { fetchUser } from "../store/asyncReducres/fetch";
 import { useAppDispatch } from "../store/hooks.ts";
+import Footer from "../components/Footer.tsx";
 
 function HomeLayout() {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ function HomeLayout() {
     <div>
       <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 }
