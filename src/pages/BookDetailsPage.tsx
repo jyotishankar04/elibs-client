@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import toast from "react-hot-toast";
 import { useAppDispatch } from "../store/hooks.ts";
+import Loading from "../components/Loading.tsx";
 
 function BookDetailsPage() {
   const navigate = useNavigate();
@@ -61,6 +62,9 @@ function BookDetailsPage() {
   useEffect(() => {
     fetchCurrentBook(bookId as string);
   }, [bookId]);
+  if (!book) {
+    return <Loading />;
+  }
   return (
     <div className="container mx-auto mt-1">
       <div>

@@ -11,7 +11,7 @@ function HomeLayout() {
     dispatch(fetchUser());
   }, [dispatch]);
   return (
-    <div>
+    <div className="mb-20">
       <Navbar />
       <Outlet />
       <Footer />
