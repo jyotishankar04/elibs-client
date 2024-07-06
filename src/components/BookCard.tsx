@@ -41,7 +41,7 @@ const BookCard: React.FC<BookProps> = ({ book }) => {
 
   if (idArray.length > 0) {
     return (
-      <div className=" flex items-center aspect-[9/16]  flex-col gap-3">
+      <div className=" flex items-center  flex-col gap-3">
         <Link
           to={`/book/${book._id}`}
           className="aspect-[12/16] w-52 overflow-hidden rounded-md bg-slate-300"

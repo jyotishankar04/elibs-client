@@ -117,7 +117,7 @@ function UserProfilePage() {
             <h1 className="text-3xl text-orange-500 font-semibold  ">
               Your Published Books
             </h1>
-            <div className="grid grid-cols-4 mt-2 gap-10">
+            <div className="grid  grid-cols-4 mt-2 gap-10">
               {user.publishedBooks.length > 0 ? (
                 user.publishedBooks.map((book: Book, index) => (
                   <BookCard key={index} book={book} />
