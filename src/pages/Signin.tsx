@@ -25,6 +25,18 @@ function Signin() {
   const dispatch = useAppDispatch();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (inputValue.email == "" || inputValue.password == "") {
+      toast.error("All fields are required", {
+        duration: 1000,
+      });
+      return;
+    }
+    if (inputValue.password.length < 6) {
+      toast.error("Password must be at least 6 characters", {
+        duration: 1000,
+      });
+      return;
+    }
     dispatch(startDrowerLoader()); // Redux action to start drower loader
     const data = {
       email: inputValue.email,

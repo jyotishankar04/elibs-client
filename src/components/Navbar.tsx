@@ -19,16 +19,20 @@ function Navbar() {
           coders_BooK
         </Link>
       </div>
-      <div className={`flex gap-5 ${isLogin ? "hidden" : "block"}`}>
+      <div
+        className={`flex gap-1 items-center sm:gap-5 ${
+          isLogin ? "hidden" : "block"
+        }`}
+      >
         <Link
           to={"/auth/signin"}
-          className="bg-white border-2 border-orange-500 transition-colors  hover:bg-orange-200 text-orange-600 py-2 px-5 text-xl font-semibold rounded-lg"
+          className="bg-white border-2 border-orange-500 transition-colors  hover:bg-orange-200 text-orange-600 px-1 py-1 sm:py-2 sm:px-5 sm:text-xl font-semibold rounded-lg"
         >
           Sign in
         </Link>
         <Link
           to={"/auth/signup"}
-          className="text-white bg-orange-600 hover:bg-orange-800 py-2 px-5 transition-colors text-xl font-semibold rounded-lg"
+          className="text-white bg-orange-600 hover:bg-orange-800 sm:py-2 sm:px-5 px-1 py-1 transition-colors sm:text-xl font-semibold rounded-lg"
         >
           Sign up
         </Link>
