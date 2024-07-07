@@ -6,7 +6,6 @@ import axios from "axios";
 import { timeElapsedSince } from "../utils/timeCalculate";
 import { FaRegHeart } from "react-icons/fa";
 import { IoIosCloudDownload } from "react-icons/io";
-import { GiFastBackwardButton } from "react-icons/gi";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import toast from "react-hot-toast";
@@ -15,7 +14,6 @@ import Loading from "../components/Loading.tsx";
 import GoBackBtn from "../components/GoBackBtn.tsx";
 
 function BookDetailsPage() {
-  const navigate = useNavigate();
   const { bookId } = useParams();
   const [book, setBook] = useState<Book | undefined>();
   const fetchCurrentBook = async (bookId: string) => {
