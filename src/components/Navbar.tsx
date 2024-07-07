@@ -10,11 +10,11 @@ function Navbar() {
   }, [isLogin]);
   return (
     <div
-      className={`container bg-white sticky top-0 border-b-2 mx-auto py-5 px-5 z-50  flex justify-between items-center 
+      className={`xl:container w-full bg-white sticky p-3 top-0 border-b-2 mx-auto  md:py-5 px-5 z-50  flex justify-between items-center 
         
       `}
     >
-      <div className="text-3xl  font-semibold ">
+      <div className="md:text-3xl text-xl  font-semibold ">
         <Link to={"/"} className="text-orange-600">
           coders_BooK
         </Link>
@@ -33,7 +33,7 @@ function Navbar() {
           Sign up
         </Link>
       </div>
-      <div className={`${isLogin ? "block" : "hidden"}`}>
+      <div className={`${isLogin ? "block" : "hidden"} `}>
         <UserMenu />
       </div>
     </div>

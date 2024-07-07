@@ -3,7 +3,7 @@ import ImageBanner from "../components/ImageBannner";
 
 function Home() {
   return (
-    <div className="container mx-auto ">
+    <div className="xl:container w-full p-3 mx-auto ">
       <ImageBanner />
       <BookList />
     </div>

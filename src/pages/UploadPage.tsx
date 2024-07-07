@@ -91,13 +91,13 @@ function UploadPage() {
     <div className="container mx-auto my-2">
       <div>
         <div>
-          <h1 className="text-3xl">Upload Your Book</h1>
-          <p className="text-sm text-red-600">
+          <h1 className="text-xl ml-4 sm:text-3xl">Upload Your Book</h1>
+          <p className="text-sm ml-4 text-red-600">
             Please upload your book in pdf format
           </p>
           <hr />
           <form onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 sm:p-1 p-5">
               <div>
                 <Input
                   label="Book Title"
@@ -108,7 +108,7 @@ function UploadPage() {
                   placeholder="Book name..."
                 ></Input>
               </div>
-              <div className="w-full mt-5 grid grid-cols-2 gap-5 ">
+              <div className="w-full sm:mt-5 grid grid-cols-1 sm:grid-cols-2 gap-5 ">
                 <div>
                   <Input
                     label="Author's Name"
@@ -154,6 +154,7 @@ function UploadPage() {
                     className="text-gray-800 text-sm font-semibold"
                   >
                     Upload Book PDF{" "}
+                    <span className="text-red-600">*size &lt; 10mb*</span>
                   </label>
 
                   <input

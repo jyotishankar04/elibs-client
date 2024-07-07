@@ -39,109 +39,55 @@ const BookCard: React.FC<BookProps> = ({ book }) => {
     }
   };
 
-  if (idArray.length > 0) {
-    return (
-      <div className=" flex items-center  flex-col gap-3">
+  return (
+    <div className=" sm:flex sm:items-center   sm:flex-col grid grid-cols-2 md:p-2 gap-3">
+      <Link
+        to={`/book/${book._id}`}
+        className="aspect-[12/16] mx-auto w-40 sm:w-52 overflow-hidden rounded-md bg-slate-300"
+      >
+        <img
+          loading="lazy"
+          src={book.coverImage}
+          className="w-full hover:scale-110 bg-gray-300  h-full duration-300 object-cover object-center"
+        />
+      </Link>
+      <div className="text-center justify-between  mb-3 w-full flex flex-col  items-center sm:justify-center">
         <Link
           to={`/book/${book._id}`}
-          className="aspect-[12/16] w-52 overflow-hidden rounded-md bg-slate-300"
+          className=" text-lg md:text-2xl md:line-clamp-2
+            line-clamp-4 
+            hover:text-orange-500 cursor-pointer hover:underline duration-150"
         >
-          <img
-            loading="lazy"
-            src={book.coverImage}
-            className="w-full hover:scale-110 bg-gray-300  h-full duration-300 object-cover object-center"
-          />
+          {book.title}
         </Link>
-        <div className="text-center  mb-3 w-full flex flex-col  items-center justify-center">
-          <Link
-            to={`/book/${book._id}`}
-            className="text-2xl line-clamp-2 hover:text-orange-500 cursor-pointer hover:underline duration-150"
-          >
-            {book.title}
-          </Link>
-          <p className="text-sm ">{book.author}</p>
+        <p className="text-sm ">{book.author}</p>
 
-          <Link
-            to={`/user/${book.uploadedBy._id}`}
-            className="text-sm underline"
-          >
-            {book.uploadedBy.name}
-          </Link>
-          <button
-            className={`text-white min-w-10 ${
-              book?._id && idArray.includes(book._id)
-                ? "bg-gray-300 cursor-not-allowed "
-                : "hover:bg-orange-800 bg-orange-600"
-            } text-lg px-2 py-2 rounded-sm  `}
-            disabled={idArray.includes(book._id) ? true : false}
-            onClick={handleAddToWishlist}
-          >
-            {buttonLoading ? (
-              <div className="w-5 h-5 border-y-transparent animate-spin border-4 rounded-full border-white"></div>
-            ) : idArray.includes(book._id) ? (
-              <p className="flex gap-2 items-center">
-                Added
-                <FaCheck />
-              </p>
-            ) : (
-              <p className="text-sm ">Add to wishlist</p>
-            )}
-          </button>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className=" flex items-center aspect-[9/16]  flex-col gap-3">
-        <Link
-          to={`/book/${book._id}`}
-          className="aspect-[12/16] w-52 overflow-hidden rounded-md bg-slate-300"
+        <Link to={`/user/${book.uploadedBy._id}`} className="text-sm underline">
+          {book.uploadedBy.name}
+        </Link>
+        <button
+          className={`text-white min-w-10 ${
+            book?._id && idArray.includes(book._id)
+              ? "bg-gray-300 cursor-not-allowed "
+              : "hover:bg-orange-800 bg-orange-600"
+          } text-lg px-2 py-2 rounded-sm  `}
+          disabled={idArray.includes(book._id) ? true : false}
+          onClick={handleAddToWishlist}
         >
-          <img
-            loading="lazy"
-            src={book.coverImage}
-            className="w-full hover:scale-110 bg-gray-300  h-full duration-300 object-cover object-center"
-          />
-        </Link>
-        <div className="text-center  mb-3 w-full flex flex-col  items-center justify-center">
-          <Link
-            to={`/book/${book._id}`}
-            className="text-2xl line-clamp-2 hover:text-orange-500 cursor-pointer hover:underline duration-150"
-          >
-            {book.title}
-          </Link>
-          <p className="text-sm ">{book.author}</p>
-
-          <Link
-            to={`/user/${book.uploadedBy._id}`}
-            className="text-sm underline"
-          >
-            {book.uploadedBy.name}
-          </Link>
-          <button
-            className={`text-white min-w-10 ${
-              idArray.includes(book._id)
-                ? "bg-gray-300 cursor-not-allowed "
-                : "hover:bg-orange-800 bg-orange-600"
-            } text-lg px-2 py-2 rounded-sm  `}
-            disabled={idArray.includes(book._id) ? true : false}
-            onClick={handleAddToWishlist}
-          >
-            {buttonLoading ? (
-              <div className="w-5 h-5 border-y-transparent animate-spin border-4 rounded-full border-white"></div>
-            ) : idArray.includes(book._id) ? (
-              <p className="flex gap-2 items-center">
-                Added
-                <FaCheck />
-              </p>
-            ) : (
-              <p className="text-sm ">Add to wishlist</p>
-            )}
-          </button>
-        </div>
+          {buttonLoading ? (
+            <div className="w-5 h-5 border-y-transparent animate-spin border-4 rounded-full border-white"></div>
+          ) : idArray.includes(book._id) ? (
+            <p className="flex gap-2 items-center">
+              Added
+              <FaCheck />
+            </p>
+          ) : (
+            <p className="text-sm ">Add to wishlist</p>
+          )}
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default BookCard;

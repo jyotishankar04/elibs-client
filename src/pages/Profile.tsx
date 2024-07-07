@@ -20,19 +20,19 @@ function Profile() {
   }, [dispatch]);
   const user = useSelector((state: RootState) => state.user);
   return (
-    <div className="container mx-auto  ">
+    <div className="sm:container w-full mx-auto">
       <div className="grid grid-cols-10 h-full items-center  ">
         <GoBackBtn />
-        <h1 className="col-span-9 text-center text-2xl font-semibold text-gray-800">
+        <h1 className="sm:col-span-9 col-span-6 text-center text-lg sm:text-2xl font-semibold text-gray-800">
           Welcome to your Profile{" "}
         </h1>
       </div>
-      <div className="grid grid-cols-3 gap-6 mt-3">
-        <div className="shadow-md p-4 flex-col flex items-center justify-center rounded-lg">
+      <div className="sm:grid flex flex-col sm:items-start  items-center  sm:grid-cols-3 sm:gap-6 mt-3">
+        <div className="sm:shadow-md w-full p-4 flex-col flex items-center justify-center rounded-lg">
           <Link
             to={user.profileImage}
             target="_blank"
-            className="aspect-square  w-full rounded-full overflow-hidden "
+            className="aspect-square w-[50%] sm:w-full rounded-full overflow-hidden "
           >
             <img
               loading="lazy"
@@ -41,24 +41,23 @@ function Profile() {
             />
           </Link>
           <Link
-            className="bg-gray-800 py-3 px-8 hover:bg-gray-950 text-white mt-4 rounded-lg"
+            className="bg-gray-800 sm:py-3 py-2 text-sm px-8 hover:bg-gray-950 text-white mt-4 rounded-lg"
             to={`/user/settings/general`}
           >
-            {" "}
             Edit Profile
           </Link>
         </div>
         <div
           className="shadow-md flex
-          flex-col justify-start items-start p-5 col-span-2 text-xl gap-4"
+          flex-col justify-start items-center sm:items-start p-5 col-span-2 sm:text-xl gap-4"
         >
-          <h1 className="text-3xl text-orange-500 font-semibold  ">
+          <h1 className="sm:text-3xl text-xl text-orange-500 font-semibold  ">
             {user.name}
           </h1>
-          <p>Bio : {user.bio}</p>
+          <p className="">Bio : {user.bio}</p>
 
           <p>Created : {timeElapsedSince(user.createdAt)}</p>
-          <div className="text-3xl flex gap-10">
+          <div className="text-xl sm:text-3xl flex gap-10">
             <Link
               to={user.instagramUrl}
               target="_blank"
@@ -101,7 +100,7 @@ function Profile() {
         </div>
       </div>
       <div className="w-full  p-5 shadow-lg">
-        <nav className=" flex items-center gap-5">
+        <nav className=" flex text-sm sm:text-lg items-center sm:gap-5 gap-2">
           <p
             onClick={() => setToggleView(1)}
             className={`${
@@ -128,7 +127,7 @@ function Profile() {
                 ))}
             </div>
           ) : (
-            <div className="grid grid-cols-4 gap-10 mt-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 ">
               {user.publishedBooks.length > 0 ? (
                 user.publishedBooks.map((book: Book, index) => (
                   <BookCard key={index} book={book} />

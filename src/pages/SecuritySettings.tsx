@@ -87,7 +87,7 @@ function SecuritySettings() {
     <div>
       <form action="" onSubmit={handleSubmit}>
         <div className=" flex flex-col gap-5">
-          <h1 className="text-2xl font-semibold text-gray-600">
+          <h1 className="text-xl sm:text-2xl font-semibold text-gray-600">
             Change Password
           </h1>
           <div className="flex flex-col gap-2">

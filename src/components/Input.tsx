@@ -17,7 +17,7 @@ const Input: React.FC<InputComponentProps> = ({
 }) => {
   return (
     <div>
-      <div className="flex mt-4 flex-col w-full items-start gap-2">
+      <div className="flex mt-1 sm:mt-4 flex-col w-full items-start gap-2">
         <label className="text-gray-800 text-sm font-semibold">{label}</label>
         <input
           type={type}

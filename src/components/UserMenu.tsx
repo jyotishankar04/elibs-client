@@ -11,21 +11,21 @@ function UserMenu() {
     <div>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14  h-14 relative  rounded-lg"
+        className="w-8 h-8   md:w-14  md:h-14 relative  rounded-lg"
       >
         <img
           className=" cursor-pointer object-cover object-center aspect-square rounded-full"
           src={user.profileImage}
         ></img>
         <div
-          className={`absolute left-[50%] w-40  ${
+          className={`absolute md:left-[50%] right-0 w-40  ${
             isOpen ? "block" : "hidden"
-          } -translate-x-[50%] rounded-md  bg-gray-50 border-2  flex flex-col `}
+          } md:-translate-x-[50%] rounded-md  bg-gray-50 border-2  flex flex-col `}
         >
           <Link
             onClick={() => setIsOpen(false)}
             to={"/user/profile"}
-            className="text-xl font-semibold  text-gray-600 p-3 hover:bg-gray-200"
+            className="text-lg md:text-xl font-semibold  text-gray-600 p-3 hover:bg-gray-200"
           >
             Profile
           </Link>
@@ -33,7 +33,7 @@ function UserMenu() {
           <Link
             onClick={() => setIsOpen(false)}
             to={"user/upload"}
-            className="text-xl font-semibold  text-gray-600 p-3 hover:bg-gray-200"
+            className="text-lg md:text-xl font-semibold  text-gray-600 p-3 hover:bg-gray-200"
           >
             Publish Book
           </Link>
@@ -41,7 +41,7 @@ function UserMenu() {
           <Link
             onClick={() => setIsOpen(false)}
             to={"/user/settings/general"}
-            className="text-xl font-semibold  text-gray-600 p-3 hover:bg-gray-200"
+            className="text-lg md:text-xl font-semibold  text-gray-600 p-3 hover:bg-gray-200"
           >
             Settings
           </Link>
@@ -49,7 +49,7 @@ function UserMenu() {
           <Link
             to={"/auth/signin"}
             onClick={() => localStorage.removeItem("token")}
-            className="text-xl font-semibold text-gray-600 p-3 hover:bg-gray-200"
+            className="text-lg md:text-xl font-semibold text-gray-600 p-3 hover:bg-gray-200"
           >
             Logout
           </Link>

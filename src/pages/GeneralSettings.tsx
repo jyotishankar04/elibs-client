@@ -123,7 +123,9 @@ function GeneralSettings() {
 
   return (
     <div>
-      <h1 className="text-2xl text-gray-600 font-semibold">General Settings</h1>
+      <h1 className="sm:text-2xl mb-5 text-xl text-gray-600 font-semibold">
+        General Settings
+      </h1>
       <div>
         <form
           onSubmit={handlesubmit}

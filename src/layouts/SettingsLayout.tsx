@@ -2,10 +2,10 @@ import { NavLink, Outlet } from "react-router-dom";
 
 function SettingsLayout() {
   return (
-    <div className="container flex  mx-auto w-full p-10">
+    <div className=" sm:container flex flex-col items-center  sm:flex-row  sm:mx-auto w-full sm:p-10 p-2">
       <div
-        className="w-3/12 flex
-       flex-col gap-4 p-4"
+        className="sm:w-3/12 flex
+       flex-row items-start sm:flex-col gap-4 p-4"
       >
         <NavLink
           to={"general"}
@@ -44,7 +44,7 @@ function SettingsLayout() {
           Support
         </NavLink>
       </div>
-      <div className="mt-4 p-4 border w-full rounded-lg">
+      <div className=" sm:mt-4 p-2 sm:p-4 border w-full rounded-lg">
         <Outlet />
       </div>
     </div>
