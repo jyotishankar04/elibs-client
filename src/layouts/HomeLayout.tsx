@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { fetchUser } from "../store/asyncReducres/fetch";
 import { useAppDispatch } from "../store/hooks.ts";
 import Footer from "../components/Footer.tsx";
+import FeedBackPopUp from "../components/FeedBackPopUp.tsx";
 
 function HomeLayout() {
   const dispatch = useAppDispatch();
@@ -15,6 +16,7 @@ function HomeLayout() {
       <Navbar />
       <Outlet />
       <Footer />
+      <FeedBackPopUp />
     </div>
   );
 }

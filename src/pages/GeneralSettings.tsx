@@ -60,6 +60,7 @@ function GeneralSettings() {
     dispatch(startDrowerLoader());
     toast.success("Image updated successfully");
     dispatch(endDrowerLoader());
+    navigate("/user/profile");
     toast.success("You will able to see profile details in few seconds");
     await new Promise(() => setTimeout(() => {}, 5000));
     navigate("/user/profile");
@@ -105,6 +106,8 @@ function GeneralSettings() {
       dispatch(fetchUser());
       dispatch(endDrowerLoader());
       toast.success("Profile updated successfully");
+      navigate("/user/profile");
+
       setFormData({
         name: "",
         bio: "",
