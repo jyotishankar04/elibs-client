@@ -6,7 +6,7 @@ function FeedBackPopUp() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(true);
-    }, 4000); // Show the pop-up after 2 seconds
+    }, 4000); // Show the pop-up after 4 seconds
 
     return () => clearTimeout(timer);
   }, []);
