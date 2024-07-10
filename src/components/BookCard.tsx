@@ -92,7 +92,11 @@ const BookCard: React.FC<BookProps> = ({ book }) => {
         >
           {book && book.uploadedBy.name}
         </Link>
-        <div className="grid grid-cols-2 gap-1 ">
+        <div
+          className={`${
+            location.pathname.includes("/user/profile") && "grid grid-cols-2"
+          } grid grid-cols-1 gap-1`}
+        >
           <button
             className={`text-white min-w-10 ${
               book?._id && idArray.includes(book && book._id)
