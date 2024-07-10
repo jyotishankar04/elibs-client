@@ -20,6 +20,7 @@ function BookList() {
     const wishlist = books.filter((book) => book._id == wish);
     sortedBooks.push(wishlist[0]);
   });
+
   return (
     <div className="flex flex-col gap-3 my-3 text-gray-500 text-lg md:text-3xl  sm:text-2xl font-semibold ">
       <div>
@@ -29,7 +30,9 @@ function BookList() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 ">
         {Array.isArray(sortedBooks)
-          ? sortedBooks.map((book) => <BookCard key={book._id} book={book} />)
+          ? sortedBooks.map((book, index) => (
+              <BookCard key={index} book={book} />
+            ))
           : "Error in fet ching books"}
       </div>
     </div>
