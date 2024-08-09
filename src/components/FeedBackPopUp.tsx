@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoMdConstruct } from "react-icons/io";
 function FeedBackPopUp() {
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShow(true);
-    }, 4000); // Show the pop-up after 4 seconds
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShow(true);
+  //   }, 4000); // Show the pop-up after 4 seconds
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const closePopup = () => {
     setShow(false);
